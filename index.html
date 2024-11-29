@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-      <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aide</title>
 </head>
 <body>
     <h1>Parle avec moi (eleves de l'LFB seulement)</h1>
-    <form action="mailto:alexander.springgay@eleve.lfb.es" method="GET" enctype="text/plain">
+    <form id="contactForm">
         <label for="subject">Sujet:</label><br>
         <input type="text" id="subject" name="subject" required><br><br>
         
@@ -17,5 +17,19 @@
         
         <button type="submit">Envoyer</button>
     </form>
+
+    <script>
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent the form from submitting the traditional way
+
+            var subject = encodeURIComponent(document.getElementById("subject").value);
+            var body = encodeURIComponent(document.getElementById("message").value);
+
+            var gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=alexander.springgay@eleve.lfb.es&su=${subject}&body=${body}`;
+
+            // Open Gmail compose window
+            window.open(gmailLink, "_blank");
+        });
+    </script>
 </body>
 </html>
