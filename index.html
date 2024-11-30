@@ -4,7 +4,8 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"   
+ rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Je t'aide!</title>
@@ -18,10 +19,10 @@
             <form id="contactForm">
                 <label for="subject">Sujet:</label><br>
                 <input type="text" id="subject" name="subject"><br><br>
-        
+
                 <label for="message">Message:</label><br>
                 <textarea id="message" name="body" rows="5" cols="30" required></textarea><br><br>
-        
+
                 <button type="submit">Envoyer</button>
             </form>
         </section>
@@ -32,18 +33,16 @@
 
             var subject = encodeURIComponent(document.getElementById("subject").value);
             var body = encodeURIComponent(document.getElementById("message").value);
-
-            var gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=alexander.springgay@eleve.lfb.es&su=${subject}&body=${body}`;
+            
+            var gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=alexander.springgay@eleve.lfb.es,mindcrafter129@duck.com&su=${subject}&body=${body}`; 
 
             try {
                 window.open(gmailLink, "_blank");
-                // Optionally display a success message here
-                console.log("Ouverture du client de messagerie..."); 
+                console.log("Ouverture du client de messagerie...");
             } catch (e) {
                 console.error("Erreur de overture de client de messagerie", e);
-                alert("Erreur de overture de client de messagerie"); 
+                alert("Erreur de overture de client de messagerie");
             }
-
         });
     </script>
 </body>
