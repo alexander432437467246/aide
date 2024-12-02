@@ -1,7 +1,7 @@
 /* Base Styling */
 body {
   font-family: 'Press Start 2P', cursive;
-  background: #f4f4f4 url('subtle_background_pattern.png') repeat;
+  background: #f4f4f4 url('subtle_background_pattern.png') no-repeat center center fixed;
   color: #333;
   margin: 0;
   padding: 0;
