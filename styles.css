@@ -1,94 +1,171 @@
+/* Base Styling */
 body {
   font-family: 'Press Start 2P', cursive;
-  background: #f4f4f4 url('subtle_background_pattern.png') repeat; 
-  color: #333; 
+  background: #f4f4f4 url('subtle_background_pattern.png') repeat;
+  color: #333;
   margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  text-align: center; 
+  text-align: center;
+  overflow-x: hidden; /* Prevents horizontal scroll */
 }
 
+/* Header Styling */
 header {
   background-color: #333;
   color: #fff;
   width: 100%;
-  padding: 2rem 0; 
-  position: relative; 
-  overflow: hidden; 
+  padding: 3rem 0; 
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Added shadow for depth */
 }
 
 .help {
   margin: 0;
-  font-size: 2.5rem;
-  z-index: 1; 
+  font-size: 3rem; /* Increased font size for more impact */
+  z-index: 1;
   position: relative;
+  text-transform: uppercase; /* Added text transformation */
+  letter-spacing: 2px; /* Added letter spacing for a modern touch */
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
 }
 
+/* Header Decorative Circle */
 header::before {
   content: '';
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 200%;
-  height: 200%;
-  background-color: rgba(255, 255, 255, 1  0.1);
+  width: 250%;
+  height: 250%;
+  background-color: rgba(255, 255, 255, 0.15); /* More transparent */
   border-radius: 50%;
-  z-index: 0; 
+  z-index: 0;
+  animation: pulse 4s infinite ease-in-out; /* Subtle pulse animation */
 }
 
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* Main Section */
 main {
-  width: 80%;
-  max-width: 600px;
-  padding: 2rem;
+  width: 85%;
+  max-width: 700px;
+  padding: 2.5rem;
 }
 
+/* Form Section */
 section {
   background-color: #fff;
-  border-radius: 12px;
+  border-radius: 15px;
   padding: 3rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  transform: translateY(-40px);
+  transition: transform 0.3s ease; /* Smooth hover effect */
+}
+
+section:hover {
+  transform: translateY(0);
 }
 
 form {
   display: flex;
   flex-direction: column;
+  align-items: flex-start; /* Align items to the left */
 }
 
+/* Label Styling */
 label {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.7rem;
   font-weight: bold;
   text-align: left;
+  color: #555; /* Slightly darker color */
 }
 
+/* Input and Textarea */
 input,
 textarea {
+  width: 100%;
   padding: 1rem;
   margin-bottom: 1.5rem;
   border: 1px solid #ddd;
-  border-radius: 6px;
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+  background-color: #fafafa; /* Soft background */
 }
 
-button {
-  background-color: #e67e22;
-  color: #fff;
-  padding: 1rem 2rem;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease; 
-  font-size: 1.2rem;
+input:focus,
+textarea:focus {
+  border-color: #e67e22;
+  outline: none;
+  box-shadow: 0 0 5px rgba(230, 126, 34, 0.8);
+  background-color: #fff; /* Slight background change on focus */
 }
-button:active {
-  transform: translateY(2px);
-  opacity: 0.7; 
+
+/* Button Styling */
+button {
+  background: linear-gradient(45deg, #e67e22, #d35400); /* Gradient button */
+  color: #fff;
+  padding: 1rem 2.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 button:hover {
-  background-color: #d35400;
-  transform: translateY(-2px);
-  opacity: 0.9; 
+  background: linear-gradient(45deg, #d35400, #e67e22); /* Reversed gradient on hover */
+  transform: translateY(-4px);
+  opacity: 0.95;
+}
+
+button:active {
+  transform: translateY(2px);
+  opacity: 0.8;
+}
+
+/* Error Message */
+#error-message {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #e74c3c;
+}
+
+/* Mobile Responsiveness */
+@media screen and (max-width: 768px) {
+  main {
+    padding: 1.5rem;
+  }
+
+  header {
+    padding: 2rem 0;
+  }
+
+  .help {
+    font-size: 2.2rem;
+  }
+
+  button {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+  }
 }
