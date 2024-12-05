@@ -28,34 +28,53 @@
         </section>
     </main>
     <script>
-        document.getElementById("contactForm").addEventListener("submit", function(event) {
-            event.preventDefault();
+    // Listen for changes in the form input fields
+    document.getElementById("contactForm").addEventListener("input", function() {
+        var subject = document.getElementById("subject").value.trim();
+        var body = document.getElementById("message").value.trim();
+        var submitBtn = document.getElementById("submitBtn");
 
-            var subject = document.getElementById("subject").value.trim();
-            var body = document.getElementById("message").value.trim();
+        // Enable or disable the submit button based on whether both fields are filled
+        if (!subject || !body) {
+            submitBtn.disabled = true; // Disable the button if fields are empty
+        } else {
+            submitBtn.disabled = false; // Enable the button if both fields are filled
+        }
+    });
 
-            // Validate input
-            if (!subject || !body) {
-                document.getElementById("error-message").style.display = "block";
-                return;
-            } else {
-                document.getElementById("error-message").style.display = "none";
-            }
+    // Handle form submission
+    document.getElementById("contactForm").addEventListener("submit", function(event) {
+        event.preventDefault();  // Prevent default form submission
 
-            var encodedSubject = encodeURIComponent(subject);
-            var encodedBody = encodeURIComponent(body);
+        var subject = document.getElementById("subject").value.trim();
+        var body = document.getElementById("message").value.trim();
 
-            var gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=alexander.springgay@eleve.lfb.es,bruno.sanchez@eleve.lfb.es&su=${encodedSubject}&body=${encodedBody}`;
+        // Validate if both fields are filled
+        if (!subject || !body) {
+            document.getElementById("error-message").style.display = "block";  // Show error message
+            return;
+        } else {
+            document.getElementById("error-message").style.display = "none";  // Hide error message
+        }
 
-            try {
-                window.open(gmailLink, "_blank");
-                console.log("Ouverture du client de messagerie...");
-            } catch (e) {
-                console.error("Erreur de ouverture du client de messagerie", e);
-                alert("Erreur de ouverture du client de messagerie. Assurez-vous que les fenêtres contextuelles sont activées.");
-            }
-        });
-    </script>
+        // Encode the form data
+        var encodedSubject = encodeURIComponent(subject);
+        var encodedBody = encodeURIComponent(body);
+
+        // Create the Gmail link to open in a new window
+        var gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=alexander.springgay@eleve.lfb.es,bruno.sanchez@eleve.lfb.es&su=${encodedSubject}&body=${encodedBody}`;
+
+        // Try to open Gmail
+        try {
+            window.open(gmailLink, "_blank");
+            console.log("Ouverture du client de messagerie...");
+        } catch (e) {
+            console.error("Erreur de ouverture du client de messagerie", e);
+            alert("Erreur de ouverture du client de messagerie. Assurez-vous que les fenêtres contextuelles sont activées.");
+        }
+    });
+</script>
+
 </body>
     <footer>
         No envies spam...
