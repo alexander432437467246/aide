@@ -27,7 +27,7 @@
             </form>
         </section>
     </main>
-    <script>
+   <script>
     // Listen for changes in the form input fields
     document.getElementById("contactForm").addEventListener("input", function() {
         var subject = document.getElementById("subject").value.trim();
@@ -37,8 +37,10 @@
         // Enable or disable the submit button based on whether both fields are filled
         if (!subject || !body) {
             submitBtn.disabled = true; // Disable the button if fields are empty
+            submitBtn.style.cursor = "not-allowed"; // Set cursor to 'not-allowed' when disabled
         } else {
             submitBtn.disabled = false; // Enable the button if both fields are filled
+            submitBtn.style.cursor = "pointer"; // Set cursor to 'pointer' when enabled
         }
     });
 
@@ -74,6 +76,7 @@
         }
     });
 </script>
+
 
 </body>
     <footer>
