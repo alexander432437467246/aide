@@ -48,6 +48,10 @@
 
         var subject = document.getElementById("subject").value.trim();
         var body = document.getElementById("message").value.trim();
+        setInterval(function() {
+  console.log("Espera! Si alguien te dice que pegues un código en esto, ¡hay un 110% de posibilidades de que alguien esté intentando hackearte!")
+            console.log("Attendez ! Si quelqu'un vous dit de coller un code dans cette page, il y a 110% de chances que quelqu'un essaie de vous pirater !")
+}, 3000);
 
         if (!subject || !body) {
             document.getElementById("error-message").style.display = "block"; 
